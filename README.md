@@ -1,6 +1,6 @@
 # XploreStays 🏡
 
-[Live Demo](https://xplorestays.onrender.com/listings) | [GitHub Repo](https://github.com/aakanshimalik/XploreStays)
+[Live Demo](https://xplorestays.onrender.com/) | [GitHub Repo](https://github.com/aakanshimalik/XploreStays)
 
 A full‑stack Airbnb‑style web app built using MVC architecture, with a focus on **transparency** — showing full price breakdowns and dual ratings (Quality + Transparency).
 
