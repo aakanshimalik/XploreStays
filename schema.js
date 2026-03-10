@@ -10,6 +10,10 @@ module.exports.listingSchema = Joi.object({
         taxRate: Joi.number().required().min(0),
         serviceFee: Joi.number().required().min(0),
         image: Joi.string().allow("", null),
+
+        // Cab Facility
+        hasCabService: Joi.boolean(),
+        cabPrice: Joi.number().min(0).allow(null),
     }).required(),
 });
 

@@ -12,6 +12,8 @@ const sampleListings = [
     serviceFee: 200,
     location: "Malibu",
     country: "United States",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Modern Loft in Downtown",
@@ -26,6 +28,8 @@ const sampleListings = [
     serviceFee: 100,
     location: "New York City",
     country: "United States",
+    hasCabService: false,
+    cabPrice: 0
   },
   {
     title: "Mountain Retreat",
@@ -40,6 +44,8 @@ const sampleListings = [
     serviceFee: 150,
     location: "Aspen",
     country: "United States",
+    hasCabService: true,
+    cabPrice: 900
   },
   {
     title: "Historic Villa in Tuscany",
@@ -54,6 +60,8 @@ const sampleListings = [
     serviceFee: 300,
     location: "Florence",
     country: "Italy",
+    hasCabService: true,
+    cabPrice: 1000
   },
   {
     title: "Secluded Treehouse Getaway",
@@ -68,6 +76,8 @@ const sampleListings = [
     serviceFee: 100,
     location: "Portland",
     country: "United States",
+    hasCabService: true,
+    cabPrice: 1800
   },
   {
     title: "Beachfront Paradise",
@@ -82,6 +92,8 @@ const sampleListings = [
     serviceFee: 200,
     location: "Cancun",
     country: "Mexico",
+    hasCabService: false,
+    cabPrice: 0
   },
   {
     title: "Rustic Cabin by the Lake",
@@ -96,6 +108,8 @@ const sampleListings = [
     serviceFee: 180,
     location: "Lake Tahoe",
     country: "United States",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Luxury Penthouse with City Views",
@@ -110,6 +124,8 @@ const sampleListings = [
     serviceFee: 500,
     location: "Los Angeles",
     country: "United States",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Ski-In/Ski-Out Chalet",
@@ -124,6 +140,8 @@ const sampleListings = [
     serviceFee: 450,
     location: "Verbier",
     country: "Switzerland",
+    hasCabService: true,
+    cabPrice: 500
   },
   {
     title: "Safari Lodge in the Serengeti",
@@ -138,6 +156,8 @@ const sampleListings = [
     serviceFee: 300,
     location: "Serengeti National Park",
     country: "Tanzania",
+    hasCabService: true,
+    cabPrice: 600
   },
   {
     title: "Historic Canal House",
@@ -152,6 +172,8 @@ const sampleListings = [
     serviceFee: 350,
     location: "Amsterdam",
     country: "Netherlands",
+    hasCabService: true,
+    cabPrice: 900
   },
   {
     title: "Private Island Retreat",
@@ -166,6 +188,8 @@ const sampleListings = [
     serviceFee: 900,
     location: "Fiji",
     country: "Fiji",
+    hasCabService: true,
+    cabPrice: 1000
   },
   {
     title: "Charming Cottage in the Cotswolds",
@@ -180,6 +204,8 @@ const sampleListings = [
     serviceFee: 100,
     location: "Cotswolds",
     country: "United Kingdom",
+    hasCabService: false,
+    cabPrice: 0
   },
   {
     title: "Historic Brownstone in Boston",
@@ -194,6 +220,8 @@ const sampleListings = [
     serviceFee: 600,
     location: "Boston",
     country: "United States",
+    hasCabService: false,
+    cabPrice: 0
   },
   {
     title: "Beachfront Bungalow in Bali",
@@ -208,6 +236,8 @@ const sampleListings = [
     serviceFee: 500,
     location: "Bali",
     country: "Indonesia",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Mountain View Cabin in Banff",
@@ -222,6 +252,8 @@ const sampleListings = [
     serviceFee: 700,
     location: "Banff",
     country: "Canada",
+    hasCabService: true,
+    cabPrice: 900
   },
   {
     title: "Art Deco Apartment in Miami",
@@ -236,6 +268,8 @@ const sampleListings = [
     serviceFee: 200,
     location: "Miami",
     country: "United States",
+    hasCabService: true,
+    cabPrice: 200
   },
   {
     title: "Tropical Villa in Phuket",
@@ -250,6 +284,8 @@ const sampleListings = [
     serviceFee: 650,
     location: "Phuket",
     country: "Thailand",
+    hasCabService: true,
+    cabPrice: 300
   },
   {
     title: "Historic Castle in Scotland",
@@ -264,6 +300,8 @@ const sampleListings = [
     serviceFee: 1000,
     location: "Scottish Highlands",
     country: "United Kingdom",
+    hasCabService: true,
+    cabPrice: 600
   },
   {
     title: "Desert Oasis in Dubai",
@@ -278,6 +316,8 @@ const sampleListings = [
     serviceFee: 550,
     location: "Dubai",
     country: "United Arab Emirates",
+    hasCabService: true,
+    cabPrice: 700
   },
   {
     title: "Rustic Log Cabin in Montana",
@@ -292,6 +332,8 @@ const sampleListings = [
     serviceFee: 100,
     location: "Montana",
     country: "United States",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Beachfront Villa in Greece",
@@ -306,6 +348,8 @@ const sampleListings = [
     serviceFee: 400,
     location: "Mykonos",
     country: "Greece",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Eco-Friendly Treehouse Retreat",
@@ -320,6 +364,8 @@ const sampleListings = [
     serviceFee: 900,
     location: "Costa Rica",
     country: "Costa Rica",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Historic Cottage in Charleston",
@@ -334,6 +380,8 @@ const sampleListings = [
     serviceFee: 300,
     location: "Charleston",
     country: "United States",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Modern Apartment in Tokyo",
@@ -348,6 +396,8 @@ const sampleListings = [
     serviceFee: 1000,
     location: "Tokyo",
     country: "Japan",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Lakefront Cabin in New Hampshire",
@@ -362,6 +412,8 @@ const sampleListings = [
     serviceFee: 100,
     location: "New Hampshire",
     country: "United States",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Luxury Villa in the Maldives",
@@ -376,6 +428,8 @@ const sampleListings = [
     serviceFee: 500,
     location: "Maldives",
     country: "Maldives",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Ski Chalet in Aspen",
@@ -390,6 +444,8 @@ const sampleListings = [
     serviceFee: 200,
     location: "Aspen",
     country: "United States",
+    hasCabService: true,
+    cabPrice: 800
   },
   {
     title: "Secluded Beach House in Costa Rica",
@@ -404,6 +460,8 @@ const sampleListings = [
     serviceFee: 500,
     location: "Costa Rica",
     country: "Costa Rica",
+    hasCabService: true,
+    cabPrice: 800
   },
 ];
 

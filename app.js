@@ -15,10 +15,13 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const Listing = require("./models/listing");
+
 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const indexRouter = require("./routes/index.js");
 
 const dbUrl = process.env.ATLASDB_URL;
 
@@ -82,6 +85,7 @@ app.use((req, res, next) => {
     next();  // if we dont call next, then we'll stuck in loop
 });
 
+
 // app.get("/demouser", async (req,res)=>{
 //     let fakeUser = new User({
 //         email: "student@gmail.com",
@@ -92,7 +96,15 @@ app.use((req, res, next) => {
 //     res.send(registeredUser);
 // })
 
-
+app.get("/", async (req, res) => {
+  try {
+    const allListings = await Listing.find({}).limit(5); // fetch top 5
+    res.render("home", { allListings });
+  } catch (err) {
+    console.log(err);
+    res.render("home", { allListings: [] }); // prevent template crash
+  }
+});
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);

@@ -28,6 +28,9 @@ module.exports.showListing = async(req, res) => {
 
 module.exports.createListing = async (req, res, next) => {
     try {
+        req.body.listing.hasCabService = req.body.listing.hasCabService === "true";
+        if (!req.body.listing.hasCabService) req.body.listing.cabPrice = 0;
+        
         let url = req.file.path;
         let filename = req.file.filename;
 

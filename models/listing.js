@@ -33,6 +33,15 @@ const listingSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User",
     },
+    hasCabService: {
+    type: Boolean,
+    default: false
+    },
+
+    cabPrice: {
+        type: Number,
+        default: 0
+    }
 });
 
 listingSchema.post("findOneAndDelete", async (listing)=>  {
