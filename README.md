@@ -102,3 +102,6 @@ Use the following test account to explore:
 ## Author
   Aakanshi Malik
   aakanshimalik54@gmail.com
+
+## Lisence
+  This project is licensed under the MIT License.
