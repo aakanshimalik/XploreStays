@@ -1,4 +1,6 @@
 const Listing = require("../models/listing");
+const { calculateTransparencyScore, getTrustLabel } = require("../utils/transparency");
+const { generateInsight } = require("../utils/ai");
 
 module.exports.index = async(req, res) => {
     const allListings = await Listing.find({});
@@ -23,7 +25,25 @@ module.exports.showListing = async(req, res) => {
         req.flash("error","Listing you requested for does not exist!");
         return res.redirect("/listings"); 
     }
-    return res.render("listings/show.ejs", {listing});
+    // return res.render("listings/show.ejs", {listing});
+     const score = calculateTransparencyScore(listing, listing.reviews);
+    const trustLabel = getTrustLabel(score);
+
+    let insight = "";
+    try {
+        insight = await generateInsight(listing, listing.reviews, score);
+    } catch (err) {
+        console.log("AI Error:", err.message);
+        insight = "AI insight unavailable";
+    }
+
+    // ✅ PASS NEW DATA TO VIEW
+    return res.render("listings/show.ejs", {
+        listing,
+        score,
+        trustLabel,
+        insight
+    });
 };
 
 module.exports.createListing = async (req, res, next) => {

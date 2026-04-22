@@ -33,6 +33,29 @@
                             <b>Total = N/A</b>
                             <% } %>
                 </p>
+                <div class="card mt-3 p-3" style="background-color:#f8f9fa; border-radius:10px;">
+                    <h5>🧠 Transparency Analysis</h5>
+
+                    <p>
+                        <strong>Trust Index:</strong>
+                        <span style="font-weight:bold;">
+                            <%= score %>/100
+                        </span>
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        <span>
+                            <%= trustLabel %>
+                        </span>
+                    </p>
+
+                    <hr>
+
+                    <pre style="white-space: pre-wrap; font-family: inherit;">
+                        <%= insight %>
+                    </pre>
+                </div>
                 <p class="card-text">
                     <%= listing.location %>
                 </p>
