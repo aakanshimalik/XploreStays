@@ -19,13 +19,29 @@ A full‑stack Airbnb‑style web app built using MVC architecture, with a focus
 - Image uploads handled via (e.g.) Cloudinary + Multer.
 - Validation using Joi schemas.
 
+- 🧠 **AI-powered Transparency Analysis (Gemini API)**:
+  - Generates intelligent insights for each listing based on price, taxes, reviews, and overall structure.
+
 ---
 
 ## 🧠 Problem Solving Approach
 
-XploreStays reimagines the vacation rental experience by focusing on pricing transparency and trustworthy reviews — two areas where traditional platforms like Airbnb often fall short. A common user frustration is not knowing the true cost upfront or whether ratings reflect reality. To solve this, I introduced a dual-rating system: one for Quality and another for Transparency, allowing guests to rate both the experience and the clarity of the listing.
+XploreStays reimagines the vacation rental experience by focusing on pricing transparency and trustworthy listings — areas where traditional platforms often lack clarity.
 
-Additionally, the platform breaks down the full price — including base rate, taxes, and service fees — so users know exactly what they’re paying for. While some hosts may worry that full transparency could expose higher prices, we address this by encouraging justifications for premium pricing (e.g. unique amenities, prime location, or luxury service), helping build trust rather than hiding costs. This approach empowers both guests and hosts and creates a more open, fair, and informed rental marketplace.
+To solve this, I built a **Trust Index System (0–100)** that evaluates each listing based on:
+- Pricing clarity
+- Tax and service fee transparency
+- Description completeness
+- Review presence
+- Hidden cost indicators
+
+This ensures users can quickly understand how transparent a listing is instead of manually analyzing details.
+
+To further enhance user experience, I integrated the **Google Gemini API** to generate AI-powered insights for each listing. These insights provide human-like analysis such as pros, concerns, and overall trust evaluation.
+
+Since AI responses may fail due to rate limits or high demand, I implemented a **fallback system and retry mechanism**, ensuring the application remains stable and always returns meaningful output.
+
+This combination of rule-based scoring + AI analysis creates a more intelligent and real-world-like marketplace experience.
 
 --- 
 
@@ -42,6 +58,13 @@ Additionally, the platform breaks down the full price — including base rate, t
 | Hosting        | Render                                |
 
 ---
+
+## 🧠 AI & Intelligence Layer
+
+- Integrated Google Gemini API for generating listing-level insights
+- Built retry mechanism to handle API failures (503 errors)
+- Implemented fallback logic to ensure system reliability
+- Combined AI output with rule-based Trust Index for better accuracy
 
 ## Getting Started (Local Setup)
 
@@ -89,6 +112,7 @@ Additionally, the platform breaks down the full price — including base rate, t
 - The map feature is not active :- I decided not to include a map feature to avoid using APIs that require credit card details. Instead, I focused on building trust-based features like Quality and Transparency ratings which directly address pain points users face when booking stays.If needed , a future version could easily support map integration.
 
 - For production, make sure SECRET, DB credentials, and Cloudinary credentials are secure and not committed to the repo.
+- AI features depend on external API availability and may temporarily fail due to rate limits or high demand. A fallback system ensures consistent user experience.
 
 ## 🔐 Demo Login
 
