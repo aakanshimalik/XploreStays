@@ -41,6 +41,22 @@ const listingSchema = new Schema({
     cabPrice: {
         type: Number,
         default: 0
+    },
+    transparencyScore: {
+    type: Number,
+    default: 0
+    },
+    transparencyInsight: {
+        type: String,
+        default: ""
+    },
+    finalScore: {
+    type: Number,
+    default: 0
+    },
+    scoreBreakdown: {
+        type: Object,
+        default: {}
     }
 });
 

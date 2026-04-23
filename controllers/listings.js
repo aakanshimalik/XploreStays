@@ -1,6 +1,9 @@
 const Listing = require("../models/listing");
 const { calculateTransparencyScore, getTrustLabel } = require("../utils/transparency");
 const { generateInsight } = require("../utils/ai");
+const calculateScore = require("../utils/calculateScore"); 
+const enrichListing = require("../utils/listingStats");
+
 
 module.exports.index = async(req, res) => {
     const allListings = await Listing.find({});
@@ -13,7 +16,7 @@ module.exports.renderNewForm = (req, res)=> {
 
 module.exports.showListing = async(req, res) => {
     let {id} = req.params;
-    const listing = await Listing.findById(id)
+    let listing = await Listing.findById(id)
         .populate({
             path: "reviews",
             populate: {
@@ -25,8 +28,9 @@ module.exports.showListing = async(req, res) => {
         req.flash("error","Listing you requested for does not exist!");
         return res.redirect("/listings"); 
     }
+    listing = enrichListing(listing);
     // return res.render("listings/show.ejs", {listing});
-     const score = calculateTransparencyScore(listing, listing.reviews);
+     const score = listing.trustIndex;
     const trustLabel = getTrustLabel(score);
 
     let insight = "";
@@ -112,27 +116,65 @@ module.exports.destroyListing = async (req,res)=> {
     res.redirect("/listings");
 };
 
+// module.exports.index = async (req, res) => {
+//     try {
+//         const { q } = req.query;
+//         let listings = [];
+
+//         if (q) {
+//             listings = await Listing.find({
+//                 $or: [
+//                     { title: { $regex: q, $options: 'i' } },
+//                     { description: { $regex: q, $options: 'i' } },
+//                     { location: { $regex: q, $options: 'i' } },
+//                     { country: { $regex: q, $options: 'i' } }
+//                 ]
+//             });
+//         } else {
+//             listings = await Listing.find({});
+//         }
+
+//         res.render("listings/index", { allListings: listings, searchTerm: q });
+//     } catch (err) {
+//         console.error("Error fetching listings:", err);
+//         res.status(500).send("Internal Server Error");
+//     }
+// };
+
 module.exports.index = async (req, res) => {
     try {
         const { q } = req.query;
-        let listings = [];
+
+        let listings = await Listing.find({})
+            .populate("reviews")
+            .populate("owner");
 
         if (q) {
             listings = await Listing.find({
                 $or: [
-                    { title: { $regex: q, $options: 'i' } },
-                    { description: { $regex: q, $options: 'i' } },
-                    { location: { $regex: q, $options: 'i' } },
-                    { country: { $regex: q, $options: 'i' } }
+                    { title: { $regex: q, $options: "i" } },
+                    { description: { $regex: q, $options: "i" } },
+                    { location: { $regex: q, $options: "i" } },
+                    { country: { $regex: q, $options: "i" } }
                 ]
-            });
-        } else {
-            listings = await Listing.find({});
+            })
+            .populate("reviews")
+            .populate("owner");
         }
 
-        res.render("listings/index", { allListings: listings, searchTerm: q });
+        // ⭐ SINGLE SOURCE OF TRUTH
+        listings = listings.map(enrichListing);
+
+        // ⭐ SORT
+        listings.sort((a, b) => b.finalScore - a.finalScore);
+
+        res.render("listings/index", {
+            allListings: listings,
+            searchTerm: q
+        });
+
     } catch (err) {
-        console.error("Error fetching listings:", err);
-        res.status(500).send("Internal Server Error");
+        console.error(err);
+        res.status(500).send("Error");
     }
 };

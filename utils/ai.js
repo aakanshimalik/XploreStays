@@ -41,5 +41,5 @@ Give:
     }
 
     // Final fallback if all retries fail
-    return "🧠 AI insight is temporarily unavailable due to high demand. Please refresh or try again later.";
+    return "Insight based on available listing data";
 };

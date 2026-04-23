@@ -55,6 +55,31 @@
                     <pre style="white-space: pre-wrap; font-family: inherit;">
                         <%= insight %>
                     </pre>
+                
+                <div class="ranking-box mt-3 p-3" style="background:#f8f9fa; border-radius:10px;">
+                    <h4>⭐ Smart Ranking</h4>
+
+                    <p>
+                        <strong>Score:</strong> <%= listing.finalScore %>/100
+
+                        <% if (listing.finalScore >= 80) { %>
+                            <span class="badge bg-success ms-2">🔥 Top Ranked</span>
+                        <% } else if (listing.finalScore >= 60) { %>
+                            <span class="badge bg-warning text-dark ms-2">👍 Good Value</span>
+                        <% } else { %>
+                            <span class="badge bg-danger ms-2">⚠️ Low Value</span>
+                        <% } %>
+                    </p>
+
+                    <% if (listing.reasons && listing.reasons.length) { %>
+                        <p><strong>Why this score?</strong></p>
+                        <ul>
+                            <% listing.reasons.forEach(reason => { %>
+                                <li><%= reason %></li>
+                            <% }) %>
+                        </ul>
+                    <% } %>
+                </div>
                 </div>
                 <p class="card-text">
                     <%= listing.location %>

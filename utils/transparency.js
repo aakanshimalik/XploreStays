@@ -36,8 +36,10 @@ function calculateTransparencyScore(listing, reviews = []) {
 
 function getTrustLabel(score) {
     if (score >= 80) return "🟢 Highly Transparent";
-    if (score >= 60) return "🟡 Moderately Transparent";
-    return "🔴 Low Transparency";
+    if (score >= 65) return "🟡 Good Value";
+    if (score >= 45) return "🟠 Moderate Value";
+    if (score >= 30) return "🔴 Below Average Value";
+    return "⚫ Low Value";
 }
 
 module.exports = { calculateTransparencyScore, getTrustLabel };
