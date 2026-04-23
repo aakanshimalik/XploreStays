@@ -23,17 +23,27 @@ A full‑stack Airbnb‑style web app built using MVC architecture, with a focus
   - Generates intelligent insights for each listing based on price, taxes, reviews, and overall structure.
 
 ---
+## 🎯 Problem Statement
+
+Traditional booking platforms lack transparency in pricing and trust evaluation, forcing users to manually judge listings.
+
+XploreStays solves this by introducing:
+- Transparent pricing breakdowns
+- Trust-based ranking system
+- AI-assisted listing evaluation
+
+---
 
 ## 🧠 Problem Solving Approach
 
 XploreStays reimagines the vacation rental experience by focusing on pricing transparency and trustworthy listings — areas where traditional platforms often lack clarity.
 
-To solve this, I built a **Trust Index System (0–100)** that evaluates each listing based on:
-- Pricing clarity
-- Tax and service fee transparency
-- Description completeness
-- Review presence
-- Hidden cost indicators
+To solve this, I built a **Weighted Smart Ranking System (0–100)** that evaluates listings using normalized signals:
+
+- Trust Score (verification + transparency level)
+- User Rating (review-based quality signal)
+- Price Fairness (relative value scoring)
+- Listing Completeness (data availability)
 
 This ensures users can quickly understand how transparent a listing is instead of manually analyzing details.
 
@@ -42,6 +52,17 @@ To further enhance user experience, I integrated the **Google Gemini API** to ge
 Since AI responses may fail due to rate limits or high demand, I implemented a **fallback system and retry mechanism**, ensuring the application remains stable and always returns meaningful output.
 
 This combination of rule-based scoring + AI analysis creates a more intelligent and real-world-like marketplace experience.
+
+
+---
+
+## 🧠 System Design Highlights
+
+- Modular scoring pipeline (data → enrichment → ranking → UI)
+- Separation of concerns (controllers vs utility logic)
+- Stateless ranking engine (recomputable anytime)
+- Hybrid AI + rule-based decision system
+- Explainable AI-style output ("Why this score")
 
 --- 
 
@@ -61,10 +82,10 @@ This combination of rule-based scoring + AI analysis creates a more intelligent 
 
 ## 🧠 AI & Intelligence Layer
 
-- Integrated Google Gemini API for generating listing-level insights
-- Built retry mechanism to handle API failures (503 errors)
-- Implemented fallback logic to ensure system reliability
-- Combined AI output with rule-based Trust Index for better accuracy
+- Integrated Google Gemini API to generate intelligent listing insights
+- AI analyzes pricing, reviews, and transparency signals
+- Built deterministic fallback system to ensure reliability during API failures
+- Combined rule-based Trust Index + AI reasoning for hybrid intelligence
 
 ## Getting Started (Local Setup)
 
@@ -112,14 +133,14 @@ This combination of rule-based scoring + AI analysis creates a more intelligent 
 - The map feature is not active :- I decided not to include a map feature to avoid using APIs that require credit card details. Instead, I focused on building trust-based features like Quality and Transparency ratings which directly address pain points users face when booking stays.If needed , a future version could easily support map integration.
 
 - For production, make sure SECRET, DB credentials, and Cloudinary credentials are secure and not committed to the repo.
-- AI features depend on external API availability and may temporarily fail due to rate limits or high demand. A fallback system ensures consistent user experience.
+- AI-generated insights use Google Gemini API with a fallback system that ensures consistent rule-based analysis when external API limits are reached.
 
 ## 🔐 Demo Login
 
 Use the following test account to explore:
 
 **Owner (Host):**
-- Email: demo@gamil.com
+- Email: demo@gmail.com
 - Username: demo
 - Password: demo
 
